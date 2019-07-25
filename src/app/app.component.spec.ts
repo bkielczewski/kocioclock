@@ -1,4 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -16,16 +17,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'kocioclock'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('kocioclock');
-  });
-
-  it('should render title in a h1 tag', () => {
+  it(`should have video`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to kocioclock!');
+    const element = fixture.debugElement.query(By.css('video'));
+    expect(element).toBeDefined();
   });
+
+  it('should have clock', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const element = fixture.debugElement.query(By.css('.clock'));
+    expect(element).toBeDefined();
+  });
+
+  it('should have date', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const element = fixture.debugElement.query(By.css('.date'));
+    expect(element).toBeDefined();
+  });
+
 });
