@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { timer } from 'rxjs';
 
 @Component({
@@ -10,14 +11,16 @@ export class ClockComponent implements OnInit {
 
   time: Date;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId) {
   }
 
   ngOnInit() {
-    this.refresh();
+    if (isPlatformBrowser(this.platformId)) {
+      this.runClock();
+    }
   }
 
-  refresh() {
+  runClock() {
     const source = timer(1000, 500);
     source.subscribe(() => {
       this.time = new Date();
