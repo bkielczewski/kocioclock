@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - lts/*
+
+services:
+  - docker
+
+install:
+  - npm i
+
+script:
+  - npm test
+  - npm run-script build:ssr
+  - docker build -t bkielczewski/kocioclock .
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
