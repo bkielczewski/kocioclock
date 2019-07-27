@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ClockComponent } from './clock/clock.component';
+import { BackgroundModule } from '../background/background.module';
+import { ClockModule } from '../clock/clock.module';
 
 import { HomeComponent } from './home.component';
 
@@ -10,7 +11,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, ClockComponent]
+      imports: [ClockModule, BackgroundModule],
+      declarations: [HomeComponent]
     })
       .compileComponents();
   }));
@@ -25,8 +27,13 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have video`, () => {
-    const element = fixture.debugElement.query(By.css('video'));
+  it(`should have clock`, () => {
+    const element = fixture.debugElement.query(By.css('app-clock'));
+    expect(element).toBeTruthy();
+  });
+
+  it(`should have background`, () => {
+    const element = fixture.debugElement.query(By.css('app-background'));
     expect(element).toBeTruthy();
   });
 
