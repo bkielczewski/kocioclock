@@ -1,7 +1,9 @@
 <div class="time">
-  {{ time | date: 'mediumTime' }}<br/>
+  <span class="hm">{{ time | date: 'h:mm' }}</span>
+  <span class="s">{{ time | date: 'ss' }}</span>
+  <span class="a">{{ time | date: 'a' }}</span>
 </div>
 
 <div class="date">
-  {{ time | date: 'EEEE \- d LLLL' }}
+  {{ time | date: 'EEEE \- LLLL d' }}
 </div>
