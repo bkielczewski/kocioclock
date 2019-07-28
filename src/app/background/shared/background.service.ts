@@ -6,7 +6,7 @@ import { Background, BackgroundType } from './background';
 })
 export class BackgroundService {
 
-  private current = 0;
+  private currentIndex = 0;
   private backgrounds: Background[] = [
     { url: 'https://storage.googleapis.com/coverr-main/mp4%2Fcoverr-the-islands-1561045392058.mp4', type: BackgroundType.VIDEO },
     { url: 'https://storage.googleapis.com/coverr-main/mp4%2Fcoverr-ocean-and-footsteps-1559889043636.mp4', type: BackgroundType.VIDEO },
@@ -17,14 +17,14 @@ export class BackgroundService {
   }
 
   getNext(): Background {
-    return this.backgrounds[this.getCurrentAndIncrease()];
+    return this.backgrounds[this.getCurrentIndexAndIncrease()];
   }
 
-  private getCurrentAndIncrease() {
-    if (this.current >= this.backgrounds.length) {
-      this.current = 0;
+  private getCurrentIndexAndIncrease() {
+    if (this.currentIndex >= this.backgrounds.length) {
+      this.currentIndex = 0;
     }
-    return this.current++;
+    return this.currentIndex++;
   }
 
 }
