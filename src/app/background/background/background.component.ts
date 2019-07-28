@@ -34,6 +34,7 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
     this.videoElement.nativeElement.load();
     this.videoElement.nativeElement.src = background.url;
     this.videoElement.nativeElement.muted = true;
+    this.videoElement.nativeElement.load();
     this.videoElement.nativeElement.play().catch((e: DOMException) => console.log(e.message));
   }
 
