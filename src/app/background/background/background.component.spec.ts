@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BackgroundComponent } from './background.component';
 
@@ -9,6 +10,7 @@ describe('BackgroundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule],
       declarations: [BackgroundComponent]
     })
       .compileComponents();

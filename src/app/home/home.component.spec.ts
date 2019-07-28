@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BackgroundModule } from '../background/background.module';
 import { ClockModule } from '../clock/clock.module';
 
@@ -11,7 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ClockModule, BackgroundModule],
+      imports: [ClockModule, BackgroundModule, NoopAnimationsModule],
       declarations: [HomeComponent]
     })
       .compileComponents();
