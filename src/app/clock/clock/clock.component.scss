@@ -6,13 +6,18 @@
 
 .time {
 
-  .hm {
-    font-size: 14vw;
+  .h {
+    font-size: 16vw;
   }
 
-  .s {
-    font-size: 6vw;
-    margin: 0 0 0 .2em;
+  .tick {
+    display: inline-block;
+    font-size: 16vw;
+    min-width: .4em;
+  }
+
+  .m {
+    font-size: 16vw;
   }
 
   .a {

@@ -1,6 +1,7 @@
 <div class="time">
-  <span class="hm">{{ time | date: 'h:mm' }}</span>
-  <span class="s">{{ time | date: 'ss' }}</span>
+  <span class="h">{{ time | date: 'hh' }}</span>
+  <span class="tick"><span [hidden]="showTick">:</span></span>
+  <span class="m">{{ time | date: 'mm' }}</span>
   <span class="a">{{ time | date: 'a' }}</span>
 </div>
 

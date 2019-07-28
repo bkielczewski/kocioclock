@@ -11,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ClockComponent implements OnInit, OnDestroy {
 
   time: Date;
+  showTick = true;
   private componentDestroyed: Subject<boolean> = new Subject<boolean>();
 
   constructor(@Inject(PLATFORM_ID) private platformId) {
@@ -23,11 +24,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   runClock() {
-    timer(1000, 500)
+    timer(0, 1000)
       .pipe(
         takeUntil(this.componentDestroyed)
       ).subscribe(() => {
       this.time = new Date();
+      this.showTick = !this.showTick;
     });
   }
 
