@@ -22,6 +22,10 @@ export class BackgroundService {
   constructor() {
   }
 
+  getRandom(): Background {
+    return this.backgrounds[Math.floor(Math.random() * this.backgrounds.length)];
+  }
+
   getNext(): Background {
     return this.backgrounds[this.getCurrentIndexAndIncrease()];
   }

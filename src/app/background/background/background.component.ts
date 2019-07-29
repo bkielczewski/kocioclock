@@ -36,7 +36,7 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.playNext();
+    this.playRandom();
   }
 
   onVideoEnded() {
@@ -45,12 +45,12 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
 
   onAnimationDone($event: AnimationEvent) {
     if ($event.toState === 'stop' && this.videoElement) {
-      this.playNext();
+      this.playRandom();
     }
   }
 
-  private playNext() {
-    this.play(this.backgroundService.getNext());
+  private playRandom() {
+    this.play(this.backgroundService.getRandom());
   }
 
   private play(background: Background) {
