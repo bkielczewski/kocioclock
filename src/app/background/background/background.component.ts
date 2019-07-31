@@ -1,5 +1,6 @@
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Background } from '../shared/background';
 import { BackgroundService } from '../shared/background.service';
 
@@ -29,14 +30,16 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   isPlaying = false;
   @ViewChild('videoElement', { read: false, static: false }) videoElement: ElementRef<HTMLVideoElement>;
 
-  constructor(private backgroundService: BackgroundService) {
+  constructor(@Inject(PLATFORM_ID) private platformId, private backgroundService: BackgroundService) {
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
-    this.playRandom();
+    if (isPlatformBrowser(this.platformId)) {
+      this.playRandom();
+    }
   }
 
   onVideoEnded() {
