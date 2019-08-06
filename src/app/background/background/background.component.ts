@@ -47,7 +47,7 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   }
 
   onAnimationDone($event: AnimationEvent) {
-    if ($event.toState === 'stop' && this.videoElement) {
+    if ($event.toState === 'stop') {
       this.playRandom();
     }
   }
@@ -57,15 +57,17 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   }
 
   private play(background: Background) {
-    this.videoElement.nativeElement.pause();
-    this.videoElement.nativeElement.removeAttribute('src');
-    this.videoElement.nativeElement.load();
-    this.videoElement.nativeElement.src = background.url;
-    this.videoElement.nativeElement.muted = true;
-    this.videoElement.nativeElement.load();
-    this.videoElement.nativeElement.play()
-      .then(() => this.isPlaying = true)
-      .catch((e: DOMException) => console.log(e.message));
+    if (this.videoElement && this.videoElement.nativeElement) {
+      this.videoElement.nativeElement.pause();
+      this.videoElement.nativeElement.removeAttribute('src');
+      this.videoElement.nativeElement.load();
+      this.videoElement.nativeElement.src = background.url;
+      this.videoElement.nativeElement.muted = true;
+      this.videoElement.nativeElement.load();
+      this.videoElement.nativeElement.play()
+        .then(() => this.isPlaying = true)
+        .catch((e: DOMException) => console.log(e.message));
+    }
   }
 
 }
