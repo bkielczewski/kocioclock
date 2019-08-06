@@ -37,9 +37,7 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.playRandom();
-    }
+    this.playRandom();
   }
 
   onVideoEnded() {
@@ -57,7 +55,7 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
   }
 
   private play(background: Background) {
-    if (this.videoElement && this.videoElement.nativeElement) {
+    if (isPlatformBrowser(this.platformId)) {
       this.videoElement.nativeElement.pause();
       this.videoElement.nativeElement.removeAttribute('src');
       this.videoElement.nativeElement.load();
